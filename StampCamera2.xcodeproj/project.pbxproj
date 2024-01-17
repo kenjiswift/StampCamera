@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA9916412B56309800811A8C /* frame_pictures in Resources */ = {isa = PBXBuildFile; fileRef = BA9916402B56309800811A8C /* frame_pictures */; };
+		BA9C426C2B50E7BB005321EF /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C426B2B50E7BB005321EF /* Camera.swift */; };
 		BA9EB1B32B42984F000EF41C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9EB1B22B42984F000EF41C /* AppDelegate.swift */; };
 		BA9EB1B52B42984F000EF41C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9EB1B42B42984F000EF41C /* SceneDelegate.swift */; };
 		BA9EB1B72B42984F000EF41C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9EB1B62B42984F000EF41C /* ViewController.swift */; };
 		BA9EB1BA2B42984F000EF41C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA9EB1B82B42984F000EF41C /* Main.storyboard */; };
-		BA9EB1BC2B429852000EF41C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9EB1BB2B429852000EF41C /* Assets.xcassets */; };
 		BA9EB1BF2B429852000EF41C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA9EB1BD2B429852000EF41C /* LaunchScreen.storyboard */; };
 		BA9EB1CA2B429852000EF41C /* StampCamera2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9EB1C92B429852000EF41C /* StampCamera2Tests.swift */; };
 		BA9EB1D42B429852000EF41C /* StampCamera2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9EB1D32B429852000EF41C /* StampCamera2UITests.swift */; };
@@ -36,12 +37,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA9916402B56309800811A8C /* frame_pictures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = frame_pictures; sourceTree = "<group>"; };
+		BA9C426B2B50E7BB005321EF /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		BA9EB1AF2B42984F000EF41C /* StampCamera2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StampCamera2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA9EB1B22B42984F000EF41C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA9EB1B42B42984F000EF41C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BA9EB1B62B42984F000EF41C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BA9EB1B92B42984F000EF41C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BA9EB1BB2B429852000EF41C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA9EB1BE2B429852000EF41C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA9EB1C02B429852000EF41C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA9EB1C52B429852000EF41C /* StampCamera2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StampCamera2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +89,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA99163F2B56302A00811A8C /* photo */ = {
+			isa = PBXGroup;
+			children = (
+				BA9EB1B62B42984F000EF41C /* ViewController.swift */,
+				BA9916402B56309800811A8C /* frame_pictures */,
+			);
+			path = photo;
+			sourceTree = "<group>";
+		};
 		BA9EB1A62B42984F000EF41C = {
 			isa = PBXGroup;
 			children = (
@@ -112,11 +123,11 @@
 			children = (
 				BA9EB1B22B42984F000EF41C /* AppDelegate.swift */,
 				BA9EB1B42B42984F000EF41C /* SceneDelegate.swift */,
-				BA9EB1B62B42984F000EF41C /* ViewController.swift */,
+				BA99163F2B56302A00811A8C /* photo */,
+				BA9C426B2B50E7BB005321EF /* Camera.swift */,
 				BAA2FD592B4627D500E78123 /* frame_pictures */,
 				BAA2FD552B46279300E78123 /* Assets.xcassets */,
 				BA9EB1B82B42984F000EF41C /* Main.storyboard */,
-				BA9EB1BB2B429852000EF41C /* Assets.xcassets */,
 				BA9EB1BD2B429852000EF41C /* LaunchScreen.storyboard */,
 				BA9EB1C02B429852000EF41C /* Info.plist */,
 			);
@@ -262,7 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA9EB1BF2B429852000EF41C /* LaunchScreen.storyboard in Resources */,
-				BA9EB1BC2B429852000EF41C /* Assets.xcassets in Resources */,
+				BA9916412B56309800811A8C /* frame_pictures in Resources */,
 				BA9EB1BA2B42984F000EF41C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA9C426C2B50E7BB005321EF /* Camera.swift in Sources */,
 				BA9EB1B72B42984F000EF41C /* ViewController.swift in Sources */,
 				BA9EB1B32B42984F000EF41C /* AppDelegate.swift in Sources */,
 				BA9EB1B52B42984F000EF41C /* SceneDelegate.swift in Sources */,
@@ -471,6 +483,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StampCamera2/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "このアプリをご使用いただく為には、カメラ許可が必要です。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "カメラロールを利用するため";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -500,6 +513,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StampCamera2/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "このアプリをご使用いただく為には、カメラ許可が必要です。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "カメラロールを利用するため";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
