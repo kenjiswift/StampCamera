@@ -19,8 +19,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     */
     var cameraAreaSize: CGSize{
         get {
-            return CGSizeMake(self.view.frame.width,
-                              self.view.frame.height - customToolBarHeight
+            return CGSizeMake(self.pickerView.view.frame.width,
+                              self.pickerView.view.frame.height - customToolBarHeight
             )
         }
     }
@@ -39,8 +39,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             return CGRectMake(
                 0,
                 (cameraAreaSize.height * 0.5) - (self.view.frame.width * 0.5),
-                self.view.frame.width,
-                self.view.frame.width)
+                self.pickerView.view.frame.width,
+                self.pickerView.view.frame.width)
         }
     }
     
@@ -92,6 +92,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     /// 画質設定
     var picQuarity :pictureQuarityType = pictureQuarityType.small
+    //フレーム画像
+    let frameImageView = FrameImageView()
     
    
     
@@ -121,8 +123,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
 //        let camera = Camera()
         
         cameraOn()
-        toolBarCustomize()
+//        toolBarCustomize()
         fiderCustomize()
+        
+        self.frameImageView.frame = self.cameraFinderFrame
+        self.pickerView.cameraOverlayView = frameImageView
+        toolBarCustomize()
     }
 
     func cameraOn(){
@@ -163,9 +169,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         bottomBar.isTranslucent = false
         bottomBar.items = [changeFramButton,takePhotoButton]
         
-        
-
-        pickerView.cameraOverlayView = bottomBar
+        self.pickerView.view.addSubview(bottomBar)
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -202,7 +206,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         pickerView.cameraViewTransform = CGAffineTransformMakeTranslation(0, cameraFinderFrame.origin.y)
         let maskView = UIView(frame: maskViewFrame)
         maskView.backgroundColor = .black
-        self.view.addSubview(maskView)
+        self.pickerView.view.addSubview(maskView)
     }
 
 //    /**
@@ -277,9 +281,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         return editImage
     }
          
-    //フレームボタン
+    //フレーム変更ボタン処理
     @objc func changeFrame(){
         print("changeFrame実行")
+        //        let testImage = FrameImageView(image: UIImage(named: "frame_pictures/frame01.png"))
+        //        testImage.frame = self.cameraFinderFrame
+        //        self.pickerView.cameraOverlayView = testImage
+        //        testImage.changeFrame()
+        
+        frameImageView.changeFrame()
+//        frameImageView.image = UIImage(named: "frame_pictures/frame01.png")
+       
+        self.pickerView.cameraOverlayView = frameImageView
     }
             
             
