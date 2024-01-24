@@ -27,8 +27,10 @@ class FrameImageView: UIImageView{
     
     func changeFrame(){
         print("changeFrame実行しました。")
-//        self.image = UIImage(named: "frame_pictures/frame01.png")
+        if frameImageIndex > frameImageResources.count - 1 {
+            frameImageIndex = 0
+        }
         self.image = UIImage(named: frameImageResources[frameImageIndex])
-        self.frameImageIndex += 1
+        frameImageIndex += 1
     }
 }

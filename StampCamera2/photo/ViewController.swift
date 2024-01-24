@@ -110,17 +110,37 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         }
     }
     
+    var picQuarityRetio: CGFloat{
+        get {
+            if picQuarity == pictureQuarityType.original {
+                return imageOriginalSize.width / cameraFinderFrame.width
+            } else {
+                return picQuarity.width() / cameraFinderFrame.width
+            }
+        }
+    }
+    
+    var editedPicRect: CGRect{
+        get {
+            return CGRectMake(0,
+                              0,
+                              cameraFinderFrame.width * picQuarityRetio,
+                              cameraFinderFrame.height * picQuarityRetio
+            )
+        }
+    }
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
         let camera = Camera()
-        print("カメラエリアサイズ： \(camera.cameraAreaSize)")
-        print("カメラファインダーフレーム： \(camera.cameraFinderFrame)")
-        print("マスクビューフレーム: \(camera.maskViewFrame)")
+        print("カメラエリアサイズ： \(cameraAreaSize)")
+        print("カメラファインダーフレーム： \(cameraFinderFrame)")
+        print("マスクビューフレーム: \(maskViewFrame)")
+
     }
 
     @IBAction func takePictureTapped(_ sender: Any) {
-//        let camera = Camera()
         
         cameraOn()
 //        toolBarCustomize()
@@ -174,7 +194,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as! UIImage //カメラで撮影した画像を取得
-//        imageView.image = image
         /// 画像の向きを調整した写真
         var editImage = adjustImageRotation(baseImage: image)
         
@@ -186,6 +205,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         
         //画像を正方形にする
         editImage = makeSqureImage(baseImage: editImage)
+        
+        //フレームを写真に合成する
+        editImage = makeImageWithFrameImage(baseImage: editImage)
         
         //写真アプリに撮影した写真を保存
         UIImageWriteToSavedPhotosAlbum(
@@ -283,18 +305,34 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
          
     //フレーム変更ボタン処理
     @objc func changeFrame(){
-        print("changeFrame実行")
-        //        let testImage = FrameImageView(image: UIImage(named: "frame_pictures/frame01.png"))
-        //        testImage.frame = self.cameraFinderFrame
-        //        self.pickerView.cameraOverlayView = testImage
-        //        testImage.changeFrame()
-        
+        print("changeFrame実行")      
         frameImageView.changeFrame()
-//        frameImageView.image = UIImage(named: "frame_pictures/frame01.png")
-       
-        self.pickerView.cameraOverlayView = frameImageView
     }
             
+    //フレーム画像を写真に合成する処理
+    func makeImageWithFrameImage(baseImage: UIImage) -> UIImage!{
+        print("makeImageWithFrameImage実行")
+        
+        var editImage = baseImage
+        
+        //描画領域を保持
+        UIGraphicsBeginImageContext(baseImage.size)
+        
+        //写真画像を割り当てる
+        editImage.draw(in: editedPicRect)
+        self.frameImageView.image?.draw(in: editedPicRect,
+                                        blendMode: .normal,
+                                        alpha: 1
+        )
+        
+        //描画領域を書き出す
+        editImage = UIGraphicsGetImageFromCurrentImageContext()!
+        
+        //描画領域を破棄
+        UIGraphicsEndImageContext()
+        
+        return editImage
+    }
             
             
 }
