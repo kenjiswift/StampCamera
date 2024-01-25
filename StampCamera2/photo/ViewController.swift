@@ -133,7 +133,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let camera = Camera()
+//        let camera = Camera()
         print("カメラエリアサイズ： \(cameraAreaSize)")
         print("カメラファインダーフレーム： \(cameraFinderFrame)")
         print("マスクビューフレーム: \(maskViewFrame)")
@@ -174,12 +174,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             target: self,
             action: #selector(takePhoto))
         
-        //フレーム変更ボタン
+        ///フレーム変更ボタン
         let changeFramButton = UIBarButtonItem(title: "フレーム変更",
                                                style: UIBarButtonItem.Style.plain,
                                                target: self,
-                                               action: #selector(changeFrame))
+                                               action: #selector(changeFrame)
+        )
         
+        ///スタンプ追加ボタン
+        let opneStampSleclectViewButton = UIBarButtonItem(title: "スタンプ追加",
+                                                          style: UIBarButtonItem.Style.plain,
+                                                          target: self,
+                                                          action: #selector(openStampSelectView)
+        )
+        ///スペースを開けるもの
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
+                                          target: nil,
+                                          action: nil
+        )
         
         let bottomBar = UIToolbar(frame: CGRect(x: 0,
                                                 y: self.view.bounds.height - customToolBarHeight,
@@ -187,7 +199,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
                                                 height:customToolBarHeight))
         bottomBar.barStyle = UIBarStyle.black
         bottomBar.isTranslucent = false
-        bottomBar.items = [changeFramButton,takePhotoButton]
+        bottomBar.items = [changeFramButton,
+                           spaceButton,
+                           takePhotoButton,
+                           spaceButton,
+                           opneStampSleclectViewButton]
         
         self.pickerView.view.addSubview(bottomBar)
     }
@@ -334,5 +350,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         return editImage
     }
             
+    ///スタンプセレクトをオープン
+    @objc func openStampSelectView(){
+        print("openStampSelectView実行")
+        
+        ///スタンプ選択画面
+        let stampCollectionViewController = StampClollectionViewController(nibName: "StampClollectionViewController", bundle: nil)
+        
+        self.pickerView.present(stampCollectionViewController, animated: true,completion: nil)
+    }
             
 }
