@@ -11,6 +11,23 @@ private let reuseIdentifier = "Cell"
 
 class StampClollectionViewController: UICollectionViewController {
     
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
+    let stampRefs = [
+        "stamp_pictures/stamp01.png",
+        "stamp_pictures/stamp02.png",
+        "stamp_pictures/stamp03.png",
+        "stamp_pictures/stamp04.png",
+        "stamp_pictures/stamp05.png",
+        "stamp_pictures/stamp06.png",
+        "stamp_pictures/stamp07.png",
+        "stamp_pictures/stamp08.png",
+        "stamp_pictures/stamp09.png",
+        "stamp_pictures/stamp10.png"
+    ]
+    
+     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +38,26 @@ class StampClollectionViewController: UICollectionViewController {
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        
+        ///マージンの幅。単位はピクセル
+        let outlineMargin: CGFloat = 8
+        
+        ///一行当たりの表示させたいセルの数
+        let cellRowCount: CGFloat = 3
+        
+        ///セルのサイズ
+        let cellSize = CGSizeMake(
+            (self.view.frame.width - (outlineMargin * 2)) / cellRowCount,
+            (self.view.frame.width - (outlineMargin * 2)) / cellRowCount
+        )
+        
+        ///flowLayout に設定
+        flowLayout.itemSize = cellSize
+        flowLayout.minimumInteritemSpacing  = outlineMargin
+        flowLayout.minimumLineSpacing = outlineMargin
+
+        
+        
     }
 
     /*
@@ -52,8 +89,12 @@ class StampClollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
         // Configure the cell
-        cell.contentView.backgroundColor = .yellow
-        return cell
+        let fileName = stampRefs[indexPath.row]
+        
+        let stampView = UIImageView(image: UIImage(named: fileName))
+        cell.backgroundView = stampView
+        
+       return cell
     }
 
     // MARK: UICollectionViewDelegate
