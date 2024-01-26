@@ -11,6 +11,7 @@
 		BA9916412B56309800811A8C /* frame_pictures in Resources */ = {isa = PBXBuildFile; fileRef = BA9916402B56309800811A8C /* frame_pictures */; };
 		BA99E7B12B620D57009040AC /* StampClollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA99E7AF2B620D57009040AC /* StampClollectionViewController.swift */; };
 		BA99E7B22B620D57009040AC /* StampClollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA99E7B02B620D57009040AC /* StampClollectionViewController.xib */; };
+		BA9B4E672B6359B1006955EC /* stamp_pictures in Resources */ = {isa = PBXBuildFile; fileRef = BA9B4E662B6359B1006955EC /* stamp_pictures */; };
 		BA9C426C2B50E7BB005321EF /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C426B2B50E7BB005321EF /* Camera.swift */; };
 		BA9EB1B32B42984F000EF41C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9EB1B22B42984F000EF41C /* AppDelegate.swift */; };
 		BA9EB1B52B42984F000EF41C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9EB1B42B42984F000EF41C /* SceneDelegate.swift */; };
@@ -44,6 +45,7 @@
 		BA9916402B56309800811A8C /* frame_pictures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = frame_pictures; sourceTree = "<group>"; };
 		BA99E7AF2B620D57009040AC /* StampClollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampClollectionViewController.swift; sourceTree = "<group>"; };
 		BA99E7B02B620D57009040AC /* StampClollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StampClollectionViewController.xib; sourceTree = "<group>"; };
+		BA9B4E662B6359B1006955EC /* stamp_pictures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = stamp_pictures; sourceTree = "<group>"; };
 		BA9C426B2B50E7BB005321EF /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		BA9EB1AF2B42984F000EF41C /* StampCamera2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StampCamera2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA9EB1B22B42984F000EF41C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				BA99E7AF2B620D57009040AC /* StampClollectionViewController.swift */,
 				BA99E7B02B620D57009040AC /* StampClollectionViewController.xib */,
 				BA9901EF2B58D69F00CB2409 /* FrameImageView.swift */,
+				BA9B4E662B6359B1006955EC /* stamp_pictures */,
 				BA9916402B56309800811A8C /* frame_pictures */,
 			);
 			path = photo;
@@ -285,6 +288,7 @@
 				BA9916412B56309800811A8C /* frame_pictures in Resources */,
 				BA9EB1BA2B42984F000EF41C /* Main.storyboard in Resources */,
 				BA99E7B22B620D57009040AC /* StampClollectionViewController.xib in Resources */,
+				BA9B4E672B6359B1006955EC /* stamp_pictures in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
