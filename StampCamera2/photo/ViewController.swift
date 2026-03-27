@@ -8,7 +8,7 @@
 import UIKit
 
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate{
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UICollectionViewDelegate{
     //MARK: -ImageView
     @IBOutlet weak var imageView: UIImageView!
     let pickerView = UIImagePickerController()
@@ -143,7 +143,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     @IBAction func takePictureTapped(_ sender: Any) {
         
         cameraOn()
-//        toolBarCustomize()
         fiderCustomize()
         
         self.frameImageView.frame = self.cameraFinderFrame
@@ -157,8 +156,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             pickerView.sourceType = .camera
             pickerView.delegate = self
             pickerView.showsCameraControls = false
-            
-            
+                        
             self.present(pickerView, animated: true)
         }
     }
@@ -357,7 +355,48 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         ///スタンプ選択画面
         let stampCollectionViewController = StampClollectionViewController(nibName: "StampClollectionViewController", bundle: nil)
         
+//        stampCollectionViewController.collectionView!.delegate = self
+        
         self.pickerView.present(stampCollectionViewController, animated: true,completion: nil)
+        
+
+
+        let cWidth :CGFloat = self.pickerView.view.frame.width
+        let cHeight :CGFloat = 100.0
+
+        let cX:CGFloat = 0.0
+        let cY:CGFloat = self.pickerView.view.frame.height - cHeight
+
+        let cancelButton = UIButton(frame: CGRectMake(cX, cY, cWidth, cHeight))
+
+        cancelButton.setTitle("キャンセル", for: .normal)
+        cancelButton.backgroundColor = .white
+        cancelButton.setTitleColor(.black, for: .normal)
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(cancelStampSelection))
+        cancelButton.addGestureRecognizer(tap)
+        stampCollectionViewController.view.addSubview(cancelButton)
+
+        self.pickerView.present(stampCollectionViewController, animated: true,completion: nil)
+
+        stampCollectionViewController.collectionView!.delegate = self
     }
             
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("collectionView実行")
+        let stampCell = collectionView.cellForItem(at: indexPath)
+        
+        let stampView = stampCell?.backgroundView
+        
+        self.pickerView.view.addSubview(stampView!)
+        
+        //一旦dissmissなしでやる
+        self.pickerView.dismiss(animated: true)
+        
+    }
+    
+    @objc func cancelStampSelection(sender: UITapGestureRecognizer){
+        print("cancelStamp")
+        self.pickerView.dismiss(animated: true)
+    }
 }

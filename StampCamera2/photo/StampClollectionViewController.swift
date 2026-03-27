@@ -26,6 +26,8 @@ class StampClollectionViewController: UICollectionViewController {
         "stamp_pictures/stamp10.png"
     ]
     
+
+    
      
     
     override func viewDidLoad() {
@@ -91,7 +93,7 @@ class StampClollectionViewController: UICollectionViewController {
         // Configure the cell
         let fileName = stampRefs[indexPath.row]
         
-        let stampView = UIImageView(image: UIImage(named: fileName))
+        let stampView = StampImageView(image: UIImage(named: fileName))
         cell.backgroundView = stampView
         
        return cell
